@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<events>
+#foreach ($event in $events)
+  <coinflip name=$event.eventName value=$event.eventValue>
+#end
+</events>

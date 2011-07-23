@@ -6,8 +6,6 @@
         <pathsSet class="linked-hash-set">
           <string>WEB-INF/spring/appServlet/servlet-context.xml</string>
           <string>WEB-INF/spring/root-context.xml</string>
-          <string>WEB-INF/velocity/coinflip.vm</string>
-          <string>WEB-INF/velocity/dieroll.vm</string>
           <string>WEB-INF/velocity/events.vm</string>
           <string>WEB-INF/velocity/home.vm</string>
           <string>WEB-INF/web.xml</string>

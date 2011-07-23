@@ -19,7 +19,7 @@
     <property name="basedir" value="C:\javatools\scdgit\RandomEventGenerator"/>
     <property name="java.endorsed.dirs" value="C:\Program Files\Java\jdk1.6.0_20\jre\lib\endorsed"/>
     <property name="os.arch" value="amd64"/>
-    <property name="surefire.real.class.path" value="C:\Users\NICKMA~1\AppData\Local\Temp\surefirebooter2456537654491781271.jar"/>
+    <property name="surefire.real.class.path" value="C:\Users\NICKMA~1\AppData\Local\Temp\surefirebooter6680704195814494417.jar"/>
     <property name="java.io.tmpdir" value="C:\Users\NICKMA~1\AppData\Local\Temp\"/>
     <property name="line.separator" value="
 "/>
@@ -59,8 +59,8 @@
     <property name="sun.desktop" value="windows"/>
     <property name="sun.cpu.isalist" value="amd64"/>
   </properties>
-  <testcase time="0.044" classname="com.scd.reg.RandomEventGeneratorTest" name="testAddEvent"/>
+  <testcase time="0.041" classname="com.scd.reg.RandomEventGeneratorTest" name="testAddEvent"/>
   <testcase time="0.002" classname="com.scd.reg.RandomEventGeneratorTest" name="testAddEvents"/>
-  <testcase time="0.037" classname="com.scd.reg.RandomEventGeneratorTest" name="testGenerateRandomEvent"/>
+  <testcase time="0.036" classname="com.scd.reg.RandomEventGeneratorTest" name="testGenerateRandomEvent"/>
   <testcase time="0.002" classname="com.scd.reg.RandomEventGeneratorTest" name="testSetPossibleEvents"/>
 </testsuite>

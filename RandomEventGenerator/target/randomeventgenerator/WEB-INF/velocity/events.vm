@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<events>
+<events value="$value" >
 #foreach ($event in $events)
-  <$eventType name=$event.eventName value=$event.eventValue>
+  <$eventType name="$event.eventName" value="$event.eventValue" />
 #end
 </events>

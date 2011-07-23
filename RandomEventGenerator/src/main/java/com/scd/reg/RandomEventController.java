@@ -35,8 +35,13 @@ public class RandomEventController {
 	@RequestMapping(value = "/coinflip.do/{times}", method = RequestMethod.GET)
 	public String coingFlips(@PathVariable Integer times, Model model) {
 		List<PossibleEvent> events = RandomEventGenerator.coinFlips(times);
+		int value = 0;
+		for(PossibleEvent event: events) {
+			value += event.getEventValue();
+		}
 		model.addAttribute("eventType","coinflip");
 		model.addAttribute("events",events);
+		model.addAttribute("value",value);
 		logger.info("Coin Flips: "+ events);
 		return "events";
 	}
@@ -46,6 +51,7 @@ public class RandomEventController {
 		List<PossibleEvent> events = RandomEventGenerator.coinFlips(1);
 		model.addAttribute("eventType","coinflip");
 		model.addAttribute("events", events);
+		model.addAttribute("value",events.get(0).getEventValue());
 		logger.info("Coin Flips: "+ events);
 		return "events";
 	}
@@ -56,8 +62,13 @@ public class RandomEventController {
 	@RequestMapping(value = "/dieroll.do/{times}", method = RequestMethod.GET)
 	public String dieRolls(@PathVariable Integer times, Model model) {
 		List<PossibleEvent> events = RandomEventGenerator.dieRolls(times);
+		int value = 0;
+		for(PossibleEvent event: events) {
+			value += event.getEventValue();
+		}
 		model.addAttribute("eventType","dieroll");
 		model.addAttribute("events",events);
+		model.addAttribute("value",value);
 		logger.info("Die Roles: "+ events);
 		return "events";
 	}
@@ -67,6 +78,7 @@ public class RandomEventController {
 		List<PossibleEvent> events = RandomEventGenerator.dieRolls(1);
 		model.addAttribute("eventType","dieroll");
 		model.addAttribute("events", events);
+		model.addAttribute("value",events.get(0).getEventValue());
 		logger.info("Die Roles: "+ events);
 		return "events";
 	}

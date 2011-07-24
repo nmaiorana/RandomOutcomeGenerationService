@@ -6,51 +6,49 @@ import java.util.List;
 
 public class RandomEventGenerator {
 	
-	private List<PossibleEvent> possibleEvents = new ArrayList<PossibleEvent>();
+	private String eventName = "Event";
+	private List<PossibleOutcome> possibleOutcomes = new ArrayList<PossibleOutcome>();
 	
-	public void addEvent(PossibleEvent possibleEvent) {
-		getPossibleEvents().add(possibleEvent);
+	public void addEvent(PossibleOutcome possibleEvent) {
+		getPossibleOutcomes().add(possibleEvent);
 	}
 	
-	public void addEvents(List<PossibleEvent> possibleEvents) {
-		getPossibleEvents().addAll(possibleEvents);
+	public void addEvents(List<PossibleOutcome> possibleEvents) {
+		getPossibleOutcomes().addAll(possibleEvents);
 	}
 	
-	public PossibleEvent generateRandomEvent() {
+	public PossibleOutcome generateRandomEvent() {
 		SecureRandom random = new SecureRandom(SecureRandom.getSeed(256));
-		int randomEventIndex = random.nextInt(getPossibleEvents().size());
-		return getPossibleEvents().get(randomEventIndex);
+		int randomEventIndex = random.nextInt(getPossibleOutcomes().size());
+		return getPossibleOutcomes().get(randomEventIndex);
 	}
 
-	public List<PossibleEvent> generateRandomEvents(Integer times) {
+	public List<PossibleOutcome> generateRandomEvents(Integer times) {
 		int timesValue = 1;
 		if (times != null) {
 			timesValue = times;
 		}
-		List<PossibleEvent> events = new ArrayList<PossibleEvent>();
+		List<PossibleOutcome> events = new ArrayList<PossibleOutcome>();
 		for (int count=0; count < timesValue; count++) {
 			events.add(generateRandomEvent());
 		}
 		return events;
 	}
 
-	public List<PossibleEvent> getPossibleEvents() {
-		return possibleEvents;
+	public List<PossibleOutcome> getPossibleOutcomes() {
+		return possibleOutcomes;
 	}
 
-	public void setPossibleEvents(List<PossibleEvent> possibleEvents) {
-		this.possibleEvents = possibleEvents;
+	public void setPossibleOutcomes(List<PossibleOutcome> possibleOutcomes) {
+		this.possibleOutcomes = possibleOutcomes;
 	}
 
-	public static List<PossibleEvent> dieRolls(Integer times) {
-		RandomEventGenerator eventGenerator = new RandomEventGenerator();
-		eventGenerator.addEvent(new PossibleEvent("One", 1));
-		eventGenerator.addEvent(new PossibleEvent("Two", 2));
-		eventGenerator.addEvent(new PossibleEvent("Three", 3));
-		eventGenerator.addEvent(new PossibleEvent("Four", 4));
-		eventGenerator.addEvent(new PossibleEvent("Five", 5));
-		eventGenerator.addEvent(new PossibleEvent("Six", 6));
-		return eventGenerator.generateRandomEvents(times);
+	public String getEventName() {
+		return eventName;
+	}
+
+	public void setEventName(String eventName) {
+		this.eventName = eventName;
 	}
 
 }

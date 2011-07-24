@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.scd.reg.events.PossibleEvent;
+import com.scd.reg.events.PossibleOutcome;
 import com.scd.reg.events.RandomEventGenerator;
 
 /**

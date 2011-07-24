@@ -1,23 +1,14 @@
 package com.scd.reg.events;
 
-import java.util.ArrayList;
-import java.util.List;
 
-public class PossibleEvent {
+public class PossibleOutcome {
 
 	private String eventName;
 	private int eventValue;
 	
-	public PossibleEvent(String eventName, int value) {
+	public PossibleOutcome(String eventName, int value) {
 		this.setEventName(eventName);
 		this.setEventValue(value);
-	}
-	
-	public static List<PossibleEvent> coinFlip() {
-		List<PossibleEvent> possibleEvents = new ArrayList<PossibleEvent>();
-		possibleEvents.add(new PossibleEvent("Heads", 1));
-		possibleEvents.add(new PossibleEvent("Tails", -1));
-		return possibleEvents;
 	}
 	
 	public String toString() {

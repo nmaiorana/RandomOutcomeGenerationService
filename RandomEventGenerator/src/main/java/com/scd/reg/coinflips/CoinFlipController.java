@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.scd.reg.events.PossibleEvent;
+import com.scd.reg.events.PossibleOutcome;
 
 /**
  * Handles requests for the application home page.
@@ -29,9 +29,9 @@ public class CoinFlipController {
 	 */
 	@RequestMapping(value = "/coinflip.do/flips/{flips}", method = RequestMethod.GET)
 	public String coingFlips(@PathVariable Integer flips, Model model) {
-		List<PossibleEvent> events = getStandardCoin().flips(flips);
+		List<PossibleOutcome> events = getStandardCoin().flips(flips);
 		int value = 0;
-		for(PossibleEvent event: events) {
+		for(PossibleOutcome event: events) {
 			value += event.getEventValue();
 		}
 		model.addAttribute("eventType","coinflip");

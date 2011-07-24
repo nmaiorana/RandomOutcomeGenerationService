@@ -1,13 +1,12 @@
 package com.scd.reg.events;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.apache.commons.math.stat.Frequency;
-import org.apache.commons.math.stat.StatUtils;
 import org.apache.commons.math.stat.descriptive.moment.Mean;
 import org.junit.Before;
 import org.junit.Test;
-
-import com.scd.reg.events.PossibleEvent;
-import com.scd.reg.events.RandomEventGenerator;
 
 public class RandomEventGeneratorTest {
 
@@ -18,17 +17,17 @@ public class RandomEventGeneratorTest {
 	@Test
 	public void testAddEvent() {
 		RandomEventGenerator eventGenerator = new RandomEventGenerator();
-		for(PossibleEvent possibleEvent: PossibleEvent.coinFlip()) {
-			eventGenerator.addEvent(possibleEvent);
-		}
-		PossibleEvent event = eventGenerator.generateRandomEvent();
+		eventGenerator.addEvent(new PossibleOutcome("Heads", 1));
+		eventGenerator.addEvent(new PossibleOutcome("Tails", -1));
 	}
 	
 	@Test
 	public void testAddEvents() {
 		RandomEventGenerator eventGenerator = new RandomEventGenerator();
-		eventGenerator.addEvents(PossibleEvent.coinFlip());
-		PossibleEvent event = eventGenerator.generateRandomEvent();
+		List<PossibleOutcome> possibleOutcomes = new ArrayList<PossibleOutcome>();
+		possibleOutcomes.add(new PossibleOutcome("Heads", 1));
+		possibleOutcomes.add(new PossibleOutcome("Tails", -1));
+		eventGenerator.addEvents(possibleOutcomes);
 	}
 
 	@Test
@@ -36,22 +35,17 @@ public class RandomEventGeneratorTest {
 		Frequency frequency = new Frequency();
 		Mean mean = new Mean();
 		RandomEventGenerator eventGenerator = new RandomEventGenerator();
-		eventGenerator.setPossibleEvents(PossibleEvent.coinFlip());
+		List<PossibleOutcome> possibleOutcomes = new ArrayList<PossibleOutcome>();
+		possibleOutcomes.add(new PossibleOutcome("Heads", 1));
+		possibleOutcomes.add(new PossibleOutcome("Tails", -1));
+		eventGenerator.setPossibleOutcomes(possibleOutcomes);
 		for (int i=0; i<10; i++) {
-			PossibleEvent event = eventGenerator.generateRandomEvent();	
+			PossibleOutcome event = eventGenerator.generateRandomEvent();	
 			frequency.addValue(event.getEventValue());
 		}
 		
 		System.out.println(frequency.getPct(1));
 		
-	}
-
-
-	@Test
-	public void testSetPossibleEvents() {
-		RandomEventGenerator eventGenerator = new RandomEventGenerator();
-		eventGenerator.setPossibleEvents(PossibleEvent.coinFlip());
-		PossibleEvent event = eventGenerator.generateRandomEvent();
 	}
 
 }

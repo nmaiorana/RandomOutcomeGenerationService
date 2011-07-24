@@ -1,10 +1,13 @@
-package com.scd.reg;
+package com.scd.reg.events;
 
 import org.apache.commons.math.stat.Frequency;
 import org.apache.commons.math.stat.StatUtils;
 import org.apache.commons.math.stat.descriptive.moment.Mean;
 import org.junit.Before;
 import org.junit.Test;
+
+import com.scd.reg.events.PossibleEvent;
+import com.scd.reg.events.RandomEventGenerator;
 
 public class RandomEventGeneratorTest {
 

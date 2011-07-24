@@ -1,4 +1,4 @@
-package com.scd.reg;
+package com.scd.reg.events;
 
 import java.security.SecureRandom;
 import java.util.ArrayList;
@@ -40,14 +40,6 @@ public class RandomEventGenerator {
 
 	public void setPossibleEvents(List<PossibleEvent> possibleEvents) {
 		this.possibleEvents = possibleEvents;
-	}
-	
-	public static List<PossibleEvent> coinFlips(Integer times) {
-		RandomEventGenerator eventGenerator = new RandomEventGenerator();
-		eventGenerator.addEvent(new PossibleEvent("Heads", 1));
-		eventGenerator.addEvent(new PossibleEvent("Tails", -1));
-		
-		return eventGenerator.generateRandomEvents(times);
 	}
 
 	public static List<PossibleEvent> dieRolls(Integer times) {

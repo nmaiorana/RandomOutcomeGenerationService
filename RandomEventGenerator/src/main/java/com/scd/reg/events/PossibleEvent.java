@@ -1,4 +1,4 @@
-package com.scd.reg;
+package com.scd.reg.events;
 
 import java.util.ArrayList;
 import java.util.List;

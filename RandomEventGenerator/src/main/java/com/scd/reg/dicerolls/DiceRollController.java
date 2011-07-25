@@ -11,8 +11,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.scd.reg.events.PossibleOutcome;
-import com.scd.reg.events.RandomEventGenerator;
+import com.scd.reg.events.Event;
 
 /**
  * Handles requests for the application home page.
@@ -23,21 +22,22 @@ public class DiceRollController {
 	private static final Logger logger = LoggerFactory.getLogger(DiceRollController.class);
 	
 	@Autowired
-	private StandardDie standardDie = new StandardDie();
+	private DiceRoller diceRoller = new DiceRoller();
 	
 	/**
 	 * Die Roll Events.
 	 */
+	@RequestMapping(value = "/dieroll.do/dice/{diceCount}/rolls/{rolls}", method = RequestMethod.GET)
+	public String diceRolls(@PathVariable Integer diceCount, @PathVariable Integer rolls, Model model) {
+		List<Event> events = getDiceRoller().rolls(diceCount, rolls);
+		model.addAttribute("events",events);
+		return "events";
+	}
+
 	@RequestMapping(value = "/dieroll.do/rolls/{rolls}", method = RequestMethod.GET)
 	public String dieRolls(@PathVariable Integer rolls, Model model) {
-		List<PossibleOutcome> events = getStandardDie().rolls(rolls);
-		int value = 0;
-		for(PossibleOutcome event: events) {
-			value += event.getEventValue();
-		}
-		model.addAttribute("eventType","dieroll");
+		List<Event> events = getDiceRoller().rolls(rolls);
 		model.addAttribute("events",events);
-		model.addAttribute("value",value);
 		return "events";
 	}
 
@@ -46,12 +46,12 @@ public class DiceRollController {
 		return "forward:dieroll.do/rolls/1";
 	}
 
-	public StandardDie getStandardDie() {
-		return standardDie;
+	public DiceRoller getDiceRoller() {
+		return diceRoller;
 	}
 
-	public void setStandardDie(StandardDie standardDie) {
-		this.standardDie = standardDie;
+	public void setDiceRoller(DiceRoller diceRoller) {
+		this.diceRoller = diceRoller;
 	}
 
 	

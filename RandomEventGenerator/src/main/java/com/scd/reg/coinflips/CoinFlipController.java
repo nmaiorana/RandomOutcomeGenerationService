@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.scd.reg.events.PossibleOutcome;
+import com.scd.reg.events.Event;
 
 /**
  * Handles requests for the application home page.
@@ -22,21 +22,15 @@ public class CoinFlipController {
 	private static final Logger logger = LoggerFactory.getLogger(CoinFlipController.class);
 	
 	@Autowired
-	private StandardCoin standardCoin = new StandardCoin();
+	private CoinFlipper coinFlipper = new CoinFlipper();
 	
 	/**
 	 * Coin Flip Events.
 	 */
 	@RequestMapping(value = "/coinflip.do/flips/{flips}", method = RequestMethod.GET)
 	public String coingFlips(@PathVariable Integer flips, Model model) {
-		List<PossibleOutcome> events = getStandardCoin().flips(flips);
-		int value = 0;
-		for(PossibleOutcome event: events) {
-			value += event.getEventValue();
-		}
-		model.addAttribute("eventType","coinflip");
+		List<Event> events = getCoinFlipper().flips(flips);
 		model.addAttribute("events",events);
-		model.addAttribute("value",value);
 		return "events";
 	}
 
@@ -44,13 +38,13 @@ public class CoinFlipController {
 	public String coinFlip() {
 		return "forward:coinflip.do/flips/1";
 	}
-	
-	public StandardCoin getStandardCoin() {
-		return standardCoin;
+
+	public CoinFlipper getCoinFlipper() {
+		return coinFlipper;
 	}
 
-	public void setStandardCoin(StandardCoin standardCoin) {
-		this.standardCoin = standardCoin;
+	public void setCoinFlipper(CoinFlipper coinFlipper) {
+		this.coinFlipper = coinFlipper;
 	}
 
 }

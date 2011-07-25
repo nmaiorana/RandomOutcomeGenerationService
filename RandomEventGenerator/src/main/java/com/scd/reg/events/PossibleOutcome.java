@@ -1,36 +1,35 @@
 package com.scd.reg.events;
 
-
 public class PossibleOutcome {
 
-	private String eventName;
-	private int eventValue;
+	private String name;
+	private int value;
 	
 	public PossibleOutcome(String eventName, int value) {
-		this.setEventName(eventName);
-		this.setEventValue(value);
+		this.setName(eventName);
+		this.setValue(value);
 	}
 	
 	public String toString() {
 		StringBuffer sb = new StringBuffer();
-		sb.append(getEventName()).append("-").append(getEventValue());
+		sb.append(getName()).append("-").append(getValue());
 		return sb.toString();
 	}
 
-	public String getEventName() {
-		return eventName;
+	public String getName() {
+		return name;
 	}
 
-	public void setEventName(String eventName) {
-		this.eventName = eventName;
+	public void setName(String outcomeName) {
+		this.name = outcomeName;
 	}
 
-	public int getEventValue() {
-		return eventValue;
+	public int getValue() {
+		return value;
 	}
 
-	public void setEventValue(int eventValue) {
-		this.eventValue = eventValue;
+	public void setValue(int outcomeValue) {
+		this.value = outcomeValue;
 	}
 
 }

@@ -10,6 +10,7 @@
 
 	<a href="coinflip.do">Coin Flip</a><br>
 	<a href="dieroll.do">Die Roll</a><br>
+	<a href="dieroll.do/dice/2/rolls/1">Dice Roll</a><br>
 </div>
 
 </body>

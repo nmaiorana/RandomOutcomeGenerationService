@@ -15,36 +15,32 @@ public class RandomEventGeneratorTest {
 	}
 
 	@Test
-	public void testAddEvent() {
+	public void testRandomlySelectOutcome() {
 		RandomEventGenerator eventGenerator = new RandomEventGenerator();
-		eventGenerator.addEvent(new PossibleOutcome("Heads", 1));
-		eventGenerator.addEvent(new PossibleOutcome("Tails", -1));
+		PossibleOutcomeSet possibleOutcomeSet = new PossibleOutcomeSet();
+		possibleOutcomeSet.addPossibleOutcome(new PossibleOutcome("Heads", 1));
+		possibleOutcomeSet.addPossibleOutcome(new PossibleOutcome("Tails", -1));
+		List<PossibleOutcomeSet> possibleOutcomeSets = new ArrayList<PossibleOutcomeSet>();
+		possibleOutcomeSets.add(possibleOutcomeSet);
+		eventGenerator.randomlySelectOutcome(possibleOutcomeSets);
 	}
 	
-	@Test
-	public void testAddEvents() {
-		RandomEventGenerator eventGenerator = new RandomEventGenerator();
-		List<PossibleOutcome> possibleOutcomes = new ArrayList<PossibleOutcome>();
-		possibleOutcomes.add(new PossibleOutcome("Heads", 1));
-		possibleOutcomes.add(new PossibleOutcome("Tails", -1));
-		eventGenerator.addEvents(possibleOutcomes);
-	}
 
 	@Test
-	public void testGenerateRandomEvent() {
+	public void testRandomlySelectOutcomeStatistics() {
 		Frequency frequency = new Frequency();
-		Mean mean = new Mean();
 		RandomEventGenerator eventGenerator = new RandomEventGenerator();
-		List<PossibleOutcome> possibleOutcomes = new ArrayList<PossibleOutcome>();
-		possibleOutcomes.add(new PossibleOutcome("Heads", 1));
-		possibleOutcomes.add(new PossibleOutcome("Tails", -1));
-		eventGenerator.setPossibleOutcomes(possibleOutcomes);
+		PossibleOutcomeSet possibleOutcomeSet = new PossibleOutcomeSet();
+		possibleOutcomeSet.addPossibleOutcome(new PossibleOutcome("Heads", 1));
+		possibleOutcomeSet.addPossibleOutcome(new PossibleOutcome("Tails", -1));
+		List<PossibleOutcomeSet> possibleOutcomeSets = new ArrayList<PossibleOutcomeSet>();
+		possibleOutcomeSets.add(possibleOutcomeSet);
 		for (int i=0; i<10; i++) {
-			PossibleOutcome event = eventGenerator.generateRandomEvent();	
-			frequency.addValue(event.getEventValue());
+			Event event = eventGenerator.randomlySelectOutcome(possibleOutcomeSets);	
+			frequency.addValue(event.getOutcomes().get(0).getValue());
 		}
 		
-		System.out.println(frequency.getPct(1));
+		System.out.println("Fequency: "+ frequency.getPct(1));
 		
 	}
 

@@ -4,51 +4,45 @@ import java.security.SecureRandom;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class RandomEventGenerator {
-	
-	private String eventName = "Event";
-	private List<PossibleOutcome> possibleOutcomes = new ArrayList<PossibleOutcome>();
-	
-	public void addEvent(PossibleOutcome possibleEvent) {
-		getPossibleOutcomes().add(possibleEvent);
-	}
-	
-	public void addEvents(List<PossibleOutcome> possibleEvents) {
-		getPossibleOutcomes().addAll(possibleEvents);
-	}
-	
-	public PossibleOutcome generateRandomEvent() {
-		SecureRandom random = new SecureRandom(SecureRandom.getSeed(256));
-		int randomEventIndex = random.nextInt(getPossibleOutcomes().size());
-		return getPossibleOutcomes().get(randomEventIndex);
+
+	public Event randomlySelectOutcome(PossibleOutcomeSet possibleOutcomeSet) {
+		List<PossibleOutcomeSet> possibleOutcomeSets = new ArrayList<PossibleOutcomeSet>();
+		possibleOutcomeSets.add(possibleOutcomeSet);
+		return randomlySelectOutcome(possibleOutcomeSet);
 	}
 
-	public List<PossibleOutcome> generateRandomEvents(Integer times) {
+	public Event randomlySelectOutcome(List<PossibleOutcomeSet> possibleOutcomeSets) {
+		SecureRandom random = new SecureRandom(SecureRandom.getSeed(256));
+		Event event = new Event();
+		for (PossibleOutcomeSet possibleOutcomeSet : possibleOutcomeSets) {
+			int randomEventIndex = random.nextInt(possibleOutcomeSet.getPossibleOutcomes().size());
+			event.addOutcome(possibleOutcomeSet.getPossibleOutcomes().get(randomEventIndex));
+		}
+		return event;
+	}
+
+	public List<Event> randomlySelectOutcomes(String eventName, Integer times, PossibleOutcomeSet possibleOutcomeSet) {
+		List<PossibleOutcomeSet> possibleOutcomeSets = new ArrayList<PossibleOutcomeSet>();
+		possibleOutcomeSets.add(possibleOutcomeSet);
+		return randomlySelectOutcomes(eventName, times, possibleOutcomeSets);
+	}
+
+	public List<Event> randomlySelectOutcomes(String eventName, Integer times, List<PossibleOutcomeSet> possibleOutcomeSets) {
 		int timesValue = 1;
 		if (times != null) {
 			timesValue = times;
 		}
-		List<PossibleOutcome> events = new ArrayList<PossibleOutcome>();
-		for (int count=0; count < timesValue; count++) {
-			events.add(generateRandomEvent());
+		List<Event> events = new ArrayList<Event>();
+		for (int count = 0; count < timesValue; count++) {
+			Event event = randomlySelectOutcome(possibleOutcomeSets);
+			event.setName(eventName);
+			events.add(event);
 		}
 		return events;
-	}
-
-	public List<PossibleOutcome> getPossibleOutcomes() {
-		return possibleOutcomes;
-	}
-
-	public void setPossibleOutcomes(List<PossibleOutcome> possibleOutcomes) {
-		this.possibleOutcomes = possibleOutcomes;
-	}
-
-	public String getEventName() {
-		return eventName;
-	}
-
-	public void setEventName(String eventName) {
-		this.eventName = eventName;
 	}
 
 }

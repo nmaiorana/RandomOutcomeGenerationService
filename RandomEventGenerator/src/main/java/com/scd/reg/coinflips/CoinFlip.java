@@ -1,7 +1,5 @@
 package com.scd.reg.coinflips;
 
-import javax.annotation.PostConstruct;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -12,18 +10,17 @@ import com.scd.reg.event.EventOutcome;
 public class CoinFlip extends Event {
 	
 	private static final String EVENT_NAME = "coinflip";
+	private static final String EVENT_DESC = "Coin Flip";
 	
 	@Autowired
 	private StandardCoin standardCoin = new StandardCoin();
 	
-	@PostConstruct
 	public void initPossibleOutcomes() {
 		setPossibleOutcomes(getStandardCoin().getPossibleOutcomes());
 	}
 	
-	@PostConstruct
-	public void initEventName() {
-		setEventName(EVENT_NAME);
+	public void initEventDescription() {
+		setEventDescription(EVENT_DESC);
 	}
 	
 	public EventOutcome flip() {
@@ -36,10 +33,6 @@ public class CoinFlip extends Event {
 
 	public void setStandardCoin(StandardCoin standardCoin) {
 		this.standardCoin = standardCoin;
-	}
-
-	public String getEventName() {
-		return EVENT_NAME;
 	}
 
 }

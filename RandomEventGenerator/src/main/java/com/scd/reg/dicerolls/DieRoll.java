@@ -1,7 +1,5 @@
 package com.scd.reg.dicerolls;
 
-import javax.annotation.PostConstruct;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -11,20 +9,20 @@ import com.scd.reg.event.EventOutcome;
 @Component
 public class DieRoll extends Event {
 	private static final String EVENT_NAME = "dieroll";
+	private static final String EVENT_DESC = "Die Roll";
 
 	
 	@Autowired
 	private StandardDie standardDie = new StandardDie();
 	
-	@PostConstruct
 	public void initPossibleOutcomes() {
 		setPossibleOutcomes(getStandardDie().getPossibleOutcomes());
 	}
 	
-	@PostConstruct
-	public void initEventName() {
-		setEventName(EVENT_NAME);
+	public void initEventDescription() {
+		setEventDescription(EVENT_DESC);
 	}
+
 	
 	public EventOutcome roll() {
 		return doEvent();

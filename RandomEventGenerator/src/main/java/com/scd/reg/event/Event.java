@@ -6,18 +6,20 @@ import java.util.List;
 
 import javax.annotation.PostConstruct;
 
+import org.springframework.beans.factory.BeanNameAware;
 import org.springframework.stereotype.Component;
 
 @Component
-abstract public class Event {
+abstract public class Event implements BeanNameAware {
 	private String eventName = new String();
+	private String eventDescription = new String();
 	private List<PossibleOutcome> possibleOutcomes = new ArrayList<PossibleOutcome>();
 
 	@PostConstruct
 	abstract public void initPossibleOutcomes();
 
 	@PostConstruct
-	abstract public void initEventName();
+	abstract public void initEventDescription();
 
 	public String toString() {
 		StringBuffer sb = new StringBuffer();
@@ -48,6 +50,18 @@ abstract public class Event {
 
 	public void setPossibleOutcomes(List<PossibleOutcome> possibleOutcomes) {
 		this.possibleOutcomes = possibleOutcomes;
+	}
+
+	public String getEventDescription() {
+		return eventDescription;
+	}
+
+	public void setEventDescription(String eventDescription) {
+		this.eventDescription = eventDescription;
+	}
+	
+	public void setBeanName(String name) {
+		setEventName(name);
 	}
 
 }

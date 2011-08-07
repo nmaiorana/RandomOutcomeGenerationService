@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<events>
+#foreach ($event in $events)
+  <event name="$event.eventName" description="$event.eventDescription">
+  </event>
+#end
+</events>

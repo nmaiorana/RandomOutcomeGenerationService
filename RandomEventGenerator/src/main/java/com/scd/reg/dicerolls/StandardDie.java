@@ -4,8 +4,8 @@ import javax.annotation.PostConstruct;
 
 import org.springframework.stereotype.Component;
 
-import com.scd.reg.events.PossibleOutcome;
-import com.scd.reg.events.PossibleOutcomeSet;
+import com.scd.reg.event.PossibleOutcome;
+import com.scd.reg.event.PossibleOutcomeSet;
 
 @Component
 public class StandardDie extends PossibleOutcomeSet {

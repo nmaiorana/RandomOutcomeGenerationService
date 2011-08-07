@@ -1,4 +1,4 @@
-package com.scd.reg.events;
+package com.scd.reg.event;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -7,11 +7,7 @@ public class PossibleOutcomeSet {
 	private List<PossibleOutcome> possibleOutcomes = new ArrayList<PossibleOutcome>();
 	
 	public String toString() {
-		StringBuffer sb = new StringBuffer();
-		for (PossibleOutcome possibleOutcome: getPossibleOutcomes()) {
-			sb.append("[").append(possibleOutcome).append("]");
-		}
-		return sb.toString();
+		return getPossibleOutcomes().toString();
 	}
 	
 	public void addPossibleOutcome(PossibleOutcome possibleOutcome) {

@@ -1,29 +1,33 @@
 package com.scd.reg.coinflips;
 
-import java.util.List;
+import javax.annotation.PostConstruct;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import com.scd.reg.events.Event;
-import com.scd.reg.events.RandomEventGenerator;
+import com.scd.reg.event.Event;
+import com.scd.reg.event.EventOutcome;
 
 @Component
-public class CoinFlipper extends RandomEventGenerator {
+public class CoinFlip extends Event {
 	
 	private static final String EVENT_NAME = "coinflip";
 	
 	@Autowired
 	private StandardCoin standardCoin = new StandardCoin();
 	
-	public Event flip() {
-		Event event = randomlySelectOutcome(getStandardCoin());
-		event.setName(EVENT_NAME);
-		return event;
+	@PostConstruct
+	public void initPossibleOutcomes() {
+		setPossibleOutcomes(getStandardCoin().getPossibleOutcomes());
 	}
-
-	public List<Event> flips(Integer flips) {
-		return randomlySelectOutcomes(EVENT_NAME, flips, getStandardCoin());
+	
+	@PostConstruct
+	public void initEventName() {
+		setEventName(EVENT_NAME);
+	}
+	
+	public EventOutcome flip() {
+		return doEvent();
 	}
 
 	public StandardCoin getStandardCoin() {
@@ -32,6 +36,10 @@ public class CoinFlipper extends RandomEventGenerator {
 
 	public void setStandardCoin(StandardCoin standardCoin) {
 		this.standardCoin = standardCoin;
+	}
+
+	public String getEventName() {
+		return EVENT_NAME;
 	}
 
 }

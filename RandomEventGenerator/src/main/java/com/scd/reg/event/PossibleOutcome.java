@@ -1,4 +1,4 @@
-package com.scd.reg.events;
+package com.scd.reg.event;
 
 public class PossibleOutcome {
 

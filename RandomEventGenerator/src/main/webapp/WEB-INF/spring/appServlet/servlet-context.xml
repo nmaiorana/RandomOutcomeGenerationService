@@ -26,8 +26,6 @@
 		<beans:property name="suffix" value=".vm" />
 	</beans:bean>
 	
-	<context:component-scan base-package="com.scd.reg.web" />
-	<context:component-scan base-package="com.scd.reg.coinflips" />
-	<context:component-scan base-package="com.scd.reg.dicerolls" />
+	<context:component-scan base-package="com.scd.reg" />
 	
 </beans:beans>

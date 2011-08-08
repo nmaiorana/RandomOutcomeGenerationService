@@ -9,7 +9,6 @@ import com.scd.reg.event.EventOutcome;
 @Component
 public class CoinFlip extends Event {
 	
-	private static final String EVENT_NAME = "coinflip";
 	private static final String EVENT_DESC = "Coin Flip";
 	
 	@Autowired

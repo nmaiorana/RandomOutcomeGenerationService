@@ -1,2 +1,2 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<$event.eventName outcome="$event.outcome.name" value="$event.outcome.value" />
+<$event.eventName outcome="$event.outcome.name" value="$event.outcome.valuesString" />

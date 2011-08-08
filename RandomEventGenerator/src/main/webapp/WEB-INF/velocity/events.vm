@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <events>
 #foreach ($event in $events)
-  <$event.eventName outcome="$event.outcome.name" value="$event.outcome.value" />#end
+  <$event.eventName outcome="$event.outcome.name" value="$event.outcome.valuesString" />#end
 </events>

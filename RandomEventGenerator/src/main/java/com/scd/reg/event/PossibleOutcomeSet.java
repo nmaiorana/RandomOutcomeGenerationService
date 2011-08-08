@@ -4,21 +4,21 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class PossibleOutcomeSet {
-	private List<PossibleOutcome> possibleOutcomes = new ArrayList<PossibleOutcome>();
+	private List<Outcome> possibleOutcomes = new ArrayList<Outcome>();
 	
 	public String toString() {
 		return getPossibleOutcomes().toString();
 	}
 	
-	public void addPossibleOutcome(PossibleOutcome possibleOutcome) {
+	public void addPossibleOutcome(Outcome possibleOutcome) {
 		getPossibleOutcomes().add(possibleOutcome);
 	}
 
-	public List<PossibleOutcome> getPossibleOutcomes() {
+	public List<Outcome> getPossibleOutcomes() {
 		return possibleOutcomes;
 	}
 
-	public void setPossibleOutcomes(List<PossibleOutcome> possibleOutcomes) {
+	public void setPossibleOutcomes(List<Outcome> possibleOutcomes) {
 		this.possibleOutcomes = possibleOutcomes;
 	}
 

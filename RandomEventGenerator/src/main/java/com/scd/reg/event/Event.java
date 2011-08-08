@@ -13,7 +13,7 @@ import org.springframework.stereotype.Component;
 abstract public class Event implements BeanNameAware {
 	private String eventName = new String();
 	private String eventDescription = new String();
-	private List<PossibleOutcome> possibleOutcomes = new ArrayList<PossibleOutcome>();
+	private List<Outcome> possibleOutcomes = new ArrayList<Outcome>();
 
 	@PostConstruct
 	abstract public void initPossibleOutcomes();
@@ -44,11 +44,11 @@ abstract public class Event implements BeanNameAware {
 		this.eventName = eventName;
 	}
 
-	public List<PossibleOutcome> getPossibleOutcomes() {
+	public List<Outcome> getPossibleOutcomes() {
 		return possibleOutcomes;
 	}
 
-	public void setPossibleOutcomes(List<PossibleOutcome> possibleOutcomes) {
+	public void setPossibleOutcomes(List<Outcome> possibleOutcomes) {
 		this.possibleOutcomes = possibleOutcomes;
 	}
 

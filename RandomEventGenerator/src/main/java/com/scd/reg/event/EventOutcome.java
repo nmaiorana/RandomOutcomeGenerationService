@@ -3,7 +3,7 @@ package com.scd.reg.event;
 
 public class EventOutcome {
 	private String eventName;
-	private PossibleOutcome outcome;
+	private Outcome outcome;
 	
 	public String toString() {
 		StringBuffer sb = new StringBuffer();
@@ -11,11 +11,11 @@ public class EventOutcome {
 		return sb.toString();
 	}
 
-	public PossibleOutcome getOutcome() {
+	public Outcome getOutcome() {
 		return outcome;
 	}
 
-	public void setOutcome(PossibleOutcome outcome) {
+	public void setOutcome(Outcome outcome) {
 		this.outcome = outcome;
 	}
 

@@ -8,7 +8,6 @@ import com.scd.reg.event.EventOutcome;
 
 @Component
 public class DieRoll extends Event {
-	private static final String EVENT_NAME = "dieroll";
 	private static final String EVENT_DESC = "Die Roll";
 
 	
